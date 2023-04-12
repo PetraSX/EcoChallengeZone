@@ -2,8 +2,8 @@ const Challenge = require('../models/challenge.model');
 
 const listChallenges = async (req, res) => {
     try {
-        const memes = await Challenge.find();
-        res.status(200).send(memes);
+        const challenges = await Challenge.find();
+        res.status(200).send(challenges);
     } catch (err) {
         res.status(500).send({ message: err });
     }
@@ -13,6 +13,7 @@ const createChallenge = async (req, res) => {
 
     const challenge = new Challenge({
         description: req.body.description,
+        tokens: req.body.tokens,
         userId: req.user._id
     });
 
